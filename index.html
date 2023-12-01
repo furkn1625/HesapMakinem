@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&family=Hanken+Grotesk:wght@700&family=Roboto:wght@300;400&family=Rubik:wght@500&family=Vina+Sans&display=swap');
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('img/depositphotos_350546212-stock-photo-math-illustration-abstract-background-numbers.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #calculator {
+            width: 400px;
+            height: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 4px solid black;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #708090;
+        }
+
+        input {
+            width: calc(100% - 50px);
+            margin-bottom: 20px;
+            padding: 20px;
+            font-size: 24px;
+            text-align: center;
+            background: #e6e6fa;
+            border: 10px solid #ccc;
+            border-radius: 50px;
+            margin-inline-end: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px; /* Butonlar ile sonuç kısmı arasındaki boşluğu ayarlamak için margin-top ekleyin */
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            box-sizing: border-box;
+            margin: 0.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid black;
+            border-radius: 20px;
+            color: black;
+            font-weight: bold;
+            background-color: #708090;
+        }
+
+        button.operator {
+            background-color: #778899;
+        }
+
+        button.double {
+            flex-basis: calc(50% - 0.2rem);
+            font-size: 20px;
+        }
+
+        /* İlgili düzenlemeler */
+        .empty-space {
+            flex: 1.5; /* Boşluğun tüm boş alana yayılmasını sağlar */
+        }
+    </style>
+    <title>Hesap Makinesi</title>
+</head>
+<body>
+
+<div id="calculator">
+    <input type="text" id="display" disabled>
+    <div class="row">
+        <button onclick="appendCharacter('1')">1</button>
+        <button onclick="appendCharacter('2')">2</button>
+        <button onclick="appendCharacter('3')">3</button>
+        <button onclick="appendCharacter('-')">-</button>
+    </div>
+    <div class="row">
+        <button onclick="appendCharacter('4')">4</button>
+        <button onclick="appendCharacter('5')">5</button>
+        <button onclick="appendCharacter('6')">6</button>
+        <button onclick="appendCharacter('*')">*</button>
+    </div>
+    <div class="row">
+        <button onclick="appendCharacter('7')">7</button>
+        <button onclick="appendCharacter('8')">8</button>
+        <button onclick="appendCharacter('9')">9</button>
+        <button onclick="appendCharacter('/')">/</button>
+    </div>
+    <div class="row">
+        <button onclick="appendCharacter('0')">0</button>
+        <button onclick="appendCharacter('.')">.</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendCharacter('+')">+</button>
+    </div>
+    <div class="row">
+        <button class="operator" onclick="calculate()">=</button>
+     
+    </div>
+            <h2>Bahattin Furkan Mutlu  ©      </h2>
+</div>
+
+<script>
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function appendCharacter(char) {
+        document.getElementById('display').value += char;
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
